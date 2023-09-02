@@ -3,7 +3,7 @@
 # Get to a predictable directory, the directory of this script
 cd "$(dirname "$0")"
 
-[ -e environment ] && . ./environment
+[ -e environment ] && . /etc/secrets/environment
 
 while true; do
     git pull
