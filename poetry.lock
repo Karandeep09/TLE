@@ -20,6 +20,14 @@ category = "main"
 optional = false
 python-versions = ">=3.6"
 
+[[package]]
+name = "fastapi"
+version = "0.79.1"
+description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
 [package.dependencies]
 async-timeout = ">=3.0,<4.0"
 attrs = ">=17.3.0"
