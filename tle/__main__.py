@@ -15,7 +15,15 @@ from matplotlib import pyplot as plt
 from tle import constants
 from tle.util import codeforces_common as cf_common
 from tle.util import discord_common, font_downloader
+from fastapi import FastAPI
 
+app = FastAPI()
+
+
+@app.get("/run")
+def read_root():
+    run()
+    return "OK"
 
 def setup():
     # Make required directories.
@@ -43,7 +51,7 @@ def setup():
     font_downloader.maybe_download()
 
 
-def main():
+def run():
     parser = argparse.ArgumentParser()
     parser.add_argument('--nodb', action='store_true')
     args = parser.parse_args()
@@ -86,6 +94,3 @@ def main():
     bot.add_listener(discord_common.bot_error_handler, name='on_command_error')
     bot.run(token)
 
-
-if __name__ == '__main__':
-    main()
