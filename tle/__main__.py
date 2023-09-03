@@ -19,13 +19,6 @@ from aiohttp import web
 
 routes = web.RouteTableDef()
 
-@routes.get('/health')
-async def hello(request):
-    return web.Response(text="Ok")
-
-app = web.Application()
-app.add_routes(routes)
-
 def setup():
     # Make required directories.
     for path in constants.ALL_DIRS:
@@ -94,8 +87,16 @@ def main():
 
     bot.add_listener(discord_common.bot_error_handler, name='on_command_error')
     bot.run(token)
-    web.run_app(app)
 
-
-if __name__ == '__main__':
+@routes.get('/run')
+async def hello(request):
     main()
+    return web.Response(text="Ok")
+
+app = web.Application()
+app.add_routes(routes)
+
+web.run_app(app)
+
+#if __name__ == '__main__':
+#    main()
