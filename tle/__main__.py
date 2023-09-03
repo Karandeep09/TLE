@@ -15,15 +15,18 @@ from matplotlib import pyplot as plt
 from tle import constants
 from tle.util import codeforces_common as cf_common
 from tle.util import discord_common, font_downloader
-from flask import Flask, request
+from aiohttp import web
 
-# create the Flask app
-app = Flask(__name__)
+routes = web.RouteTableDef()
 
-@app.route('/execute', methods=['POST'])
-def execute():
-    run()
-    return "OK"
+@routes.get('/health')
+async def hello(request):
+    return web.Response(text="Ok")
+
+app = web.Application()
+app.add_routes(routes)
+web.run_app(app)
+
 
 def setup():
     # Make required directories.
@@ -51,7 +54,7 @@ def setup():
     font_downloader.maybe_download()
 
 
-def run():
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--nodb', action='store_true')
     args = parser.parse_args()
@@ -94,3 +97,6 @@ def run():
     bot.add_listener(discord_common.bot_error_handler, name='on_command_error')
     bot.run(token)
 
+
+if __name__ == '__main__':
+    main()
