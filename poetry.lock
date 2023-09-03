@@ -22,7 +22,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "fastapi"
-version = "0.79.1"
+version = "0.103.0"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 category = "main"
 optional = false
