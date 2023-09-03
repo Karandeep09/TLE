@@ -1,9 +1,11 @@
+import multithreading
 import argparse
 import asyncio
 import distutils.util
 import logging
 import os
 import discord
+import 
 from logging.handlers import TimedRotatingFileHandler
 from os import environ
 from pathlib import Path
@@ -16,8 +18,7 @@ from tle import constants
 from tle.util import codeforces_common as cf_common
 from tle.util import discord_common, font_downloader
 from aiohttp import web
-
-routes = web.RouteTableDef()
+   
 
 def setup():
     # Make required directories.
@@ -88,15 +89,23 @@ def main():
     bot.add_listener(discord_common.bot_error_handler, name='on_command_error')
     bot.run(token)
 
+
+routes = web.RouteTableDef()
 @routes.get('/run')
 async def hello(request):
-    await main()
     return web.Response(text="Ok")
 
 app = web.Application()
 app.add_routes(routes)
 
-web.run_app(app)
+class Tasks(multithreading.MultiThread):
+    def task(self, task):
+        if task == 0:
+            web.run_app(app)
+        else main()
+
+tasks = Tasks([0,1], threads=2)        
+tasks.start()
 
 #if __name__ == '__main__':
 #    main()
