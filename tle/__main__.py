@@ -15,13 +15,13 @@ from matplotlib import pyplot as plt
 from tle import constants
 from tle.util import codeforces_common as cf_common
 from tle.util import discord_common, font_downloader
-from fastapi import FastAPI
+from flask import Flask, request
 
-app = FastAPI()
+# create the Flask app
+app = Flask(__name__)
 
-
-@app.get("/run")
-def read_root():
+@app.route('/execute', methods=['POST'])
+def execute():
     run()
     return "OK"
 
