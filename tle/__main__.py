@@ -100,8 +100,9 @@ app.add_routes(routes)
 class Tasks(multithreading.MultiThread):
     def task(self, task):
         if task == 0:
-            web.run_app(app)
-        else main()
+           web.run_app(app)
+        else:
+           main()
 
 tasks = Tasks([0,1], threads=2)        
 tasks.start()
