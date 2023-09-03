@@ -25,8 +25,6 @@ async def hello(request):
 
 app = web.Application()
 app.add_routes(routes)
-web.run_app(app)
-
 
 def setup():
     # Make required directories.
@@ -96,6 +94,7 @@ def main():
 
     bot.add_listener(discord_common.bot_error_handler, name='on_command_error')
     bot.run(token)
+    web.run_app(app)
 
 
 if __name__ == '__main__':
