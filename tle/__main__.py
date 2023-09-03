@@ -90,7 +90,7 @@ def main():
 
 @routes.get('/run')
 async def hello(request):
-    main()
+    await main()
     return web.Response(text="Ok")
 
 app = web.Application()
