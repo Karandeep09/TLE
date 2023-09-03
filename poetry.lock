@@ -95,7 +95,6 @@ python-versions = ">=3.5.3"
 
 [package.dependencies]
 aiohttp = ">=3.6.0,<3.8.0"
-multithreading = "<0.2.0"
 
 [package.extras]
 docs = ["sphinx (==3.0.3)", "sphinxcontrib-trio (==1.1.2)", "sphinxcontrib-websupport"]
