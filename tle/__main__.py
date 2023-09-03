@@ -5,7 +5,6 @@ import distutils.util
 import logging
 import os
 import discord
-import 
 from logging.handlers import TimedRotatingFileHandler
 from os import environ
 from pathlib import Path
