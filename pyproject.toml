@@ -13,6 +13,7 @@ pillow = "^9.0"
 pycairo = "^1.19.1"
 PyGObject = "^3.34.0"
 aiocache = "^0.11.1"
+multithreading = ">=0.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
